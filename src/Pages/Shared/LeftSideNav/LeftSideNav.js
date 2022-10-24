@@ -6,7 +6,7 @@ const LeftSideNav = () => {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/news-categories')
+        fetch('https://news-today-server-three.vercel.app/news-categories')
             .then(res => res.json())
             .then(data => setCategories(data))
         // .then(data => console.log(data))
@@ -16,9 +16,9 @@ const LeftSideNav = () => {
             <h2>All category: {categories.length} </h2>
             <div>
                 {
-                    categories.map( category => <p key={category.id}>
+                    categories.map(category => <p key={category.id}>
                         <Link to={`/category/${category.id}`}>{category.name}</Link>
-                    </p> )
+                    </p>)
                 }
             </div>
         </div>
