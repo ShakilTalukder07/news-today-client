@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { Navigate, useLoaderData, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
@@ -10,9 +10,8 @@ const PrivateRoute = ({ children }) => {
 
     if (loading) {
         return <Spinner animation="border" variant="primary" />
-
     }
-
+ 
     if (!user) {
         return <Navigate to='/signIn' state={{ from: location }} replace ></Navigate>
     }

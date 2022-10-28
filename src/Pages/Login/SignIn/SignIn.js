@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { toast } from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import useTitle from '../../../hooks/useTitle';
 
 const SignIn = () => {
 
@@ -11,9 +12,8 @@ const SignIn = () => {
     const { signIn, setLoading } = useContext(AuthContext);
     const naviGate = useNavigate();
     const location = useLocation();
-
     const from = location.state?.from?.pathname || '/';
-
+    useTitle('SignIn')
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -26,10 +26,10 @@ const SignIn = () => {
                 console.log(user);
                 form.reset()
                 setError('');
-                if(user.emailVerified){
-                    naviGate(from, {replace: true})
+                if (user.emailVerified) {
+                    naviGate(from, { replace: true })
                 }
-                else{
+                else {
                     toast.error('Your email is not verified, Please verify your email address.')
                 }
             })
@@ -37,7 +37,7 @@ const SignIn = () => {
                 console.error(error)
                 setError(error.message);
             })
-            .finally( ()=> {
+            .finally(() => {
                 setLoading(false)
             })
     }

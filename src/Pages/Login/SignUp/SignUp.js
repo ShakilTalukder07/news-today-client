@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 
+
 const SignUp = () => {
 
     const [error, setError] = useState('')
@@ -20,6 +21,8 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         // console.log(email, name, photoURL, password);
+
+
         createUser(email, password)
             .then(result => {
                 const user = result.user;
@@ -54,7 +57,6 @@ const SignUp = () => {
 
     const handleAccepted = (event) => {
         setAccepted(event.target.checked);
-
     }
 
     return (
